@@ -35,7 +35,7 @@ public class FournisseurServiceImpl implements FournisseurService {
     }
 
     @Override
-    public List<FournisseurDTO> createFournisseurs(List<FournisseurDTO> fournisseurs) {
+    public List<FournisseurDTO> createFournisseursList(List<FournisseurDTO> fournisseurs) {
         return null;
     }
 
