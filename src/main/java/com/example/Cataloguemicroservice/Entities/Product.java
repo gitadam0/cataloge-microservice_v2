@@ -1,5 +1,6 @@
 package com.example.Cataloguemicroservice.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,7 @@ public class Product implements Serializable {
     private Category category;
 
     @ManyToOne
+    @JsonIgnore
     private Fournisseur fournisseur;
 
     @ManyToMany

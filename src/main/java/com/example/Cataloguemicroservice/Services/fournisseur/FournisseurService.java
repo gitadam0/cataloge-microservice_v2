@@ -16,6 +16,6 @@ public interface FournisseurService {
     FournisseurDTO getFournisseurById(Long id) throws MyEntityNotFoundException;
     List<FournisseurDTO> getFournisseurs();
 
-    List<FournisseurDTO> getFournisseurProducts(long idFournisseur, long idProduct);
+    Fournisseur getFournisseurProducts(long idFournisseur) throws MyEntityNotFoundException;
 
 }

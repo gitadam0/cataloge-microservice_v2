@@ -3,6 +3,7 @@ package com.example.Cataloguemicroservice.Controller;
 import com.example.Cataloguemicroservice.Entities.Category;
 import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
 import com.example.Cataloguemicroservice.Services.Category.CategoryService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +23,20 @@ public class CategoryController {
         return categoryService.getCategorys();
     }
 
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public Category getCategoryByID(@PathVariable Long id) throws MyEntityNotFoundException {
         return categoryService.getCategoryByID(id);
+    }*/
+    @GetMapping("{id}")
+    public ResponseEntity<Category> getCategoryByID(@PathVariable Long id) {
+        try {
+            Category category = categoryService.getCategoryByID(id);
+            return new ResponseEntity<>(category, HttpStatus.OK);
+        } catch (MyEntityNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
+
 
     @PostMapping
     public Category createCategory(@RequestBody Category catalogue) {

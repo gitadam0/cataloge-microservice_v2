@@ -2,6 +2,7 @@ package com.example.Cataloguemicroservice.Services.fournisseur;
 
 import com.example.Cataloguemicroservice.DTO.FournisseurDTO;
 import com.example.Cataloguemicroservice.Entities.Fournisseur;
+import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
 import com.example.Cataloguemicroservice.Repository.EtiquetteRepository;
 import com.example.Cataloguemicroservice.Repository.FournisseurRepository;
@@ -91,13 +92,15 @@ public class FournisseurServiceImpl implements FournisseurService {
         if (listFournisseur != null) {
             return FournisseurTransformer.transformToListOfDTO(listFournisseur);
         } else {
-            // Handle the case when the list is null (you can return an empty list or throw an exception, depending on your use case)
             return Collections.emptyList(); // or throw new RuntimeException("Fournisseur list is null");
         }
     }
 
     @Override
-    public List<FournisseurDTO> getFournisseurProducts(long idFournisseur, long idProduct) {
-        return null;
+    public Fournisseur getFournisseurProducts(long idFournisseur) throws MyEntityNotFoundException {
+        return fournisseurRepository.findFournisseurWithProductsByIdFournisseur(idFournisseur)
+                .orElseThrow(()->new MyEntityNotFoundException("fournisser not found for id "+idFournisseur));
     }
+
+
 }

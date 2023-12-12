@@ -1,5 +1,6 @@
 package com.example.Cataloguemicroservice.jms;
 
+import com.example.Cataloguemicroservice.DTO.FournisseurDTO;
 import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,6 +30,19 @@ public class MessageSender {
             System.out.println("Product envoyé avec succès à la file d'attente " + destination);
         } catch (JsonProcessingException e) {
             System.err.println("Error converting Product to JSON: " + e.getMessage());
+        }
+    }
+    public void sendFournisseur(FournisseurDTO fournisseurDTO) {
+        try {
+            String jsonMessage = objectMapper.writeValueAsString(fournisseurDTO);
+            String destination = "newFournisseur";
+            jmsTemplate.send(destination, session -> {
+                javax.jms.TextMessage message = session.createTextMessage(jsonMessage);
+                return message;
+            });
+            System.out.println("Fournisseur envoyé avec succès à la file d'attente " + destination);
+        } catch (JsonProcessingException e) {
+            System.err.println("Error converting Fournisseur to JSON: " + e.getMessage());
         }
     }
     public void sendMessage(String messageText) {

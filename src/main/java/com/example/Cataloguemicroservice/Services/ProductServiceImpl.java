@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
@@ -50,6 +51,7 @@ public ProductDTO createProduct(ProductDTO product)  {
         throw new RuntimeException(e);
     }
     logger.info("created product with id {}"+producto.getIdProduct());
+
 
     return ProductTransformer.transformToDTO(productRepository.save(producto));
 }

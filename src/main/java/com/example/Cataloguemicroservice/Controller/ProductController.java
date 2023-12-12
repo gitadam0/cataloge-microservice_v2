@@ -81,7 +81,7 @@ public class ProductController {
     public ProductDTO createProductInStock(@RequestBody ProductDTO productDTO) throws MyEntityNotFoundException {
         ProductDTO productdto = productService.createProduct(productDTO);
         messageSender.sendProduct(productdto);
-        System.out.println(productdto.getName());
+        System.out.println(productdto.getCategoryID());
         return productdto;
     }
     @DeleteMapping("/{id}")
