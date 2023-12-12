@@ -3,6 +3,18 @@ package com.example.Cataloguemicroservice.Services.fournisseur;
 import com.example.Cataloguemicroservice.DTO.FournisseurDTO;
 import com.example.Cataloguemicroservice.Entities.Fournisseur;
 import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
+import com.example.Cataloguemicroservice.Repository.EtiquetteRepository;
+import com.example.Cataloguemicroservice.Repository.FournisseurRepository;
+import com.example.Cataloguemicroservice.Repository.ProductRepository;
+import com.example.Cataloguemicroservice.Repository.VarietyRepository;
+import com.example.Cataloguemicroservice.Services.Category.CategoryService;
+import com.example.Cataloguemicroservice.Services.ProductService;
+import com.example.Cataloguemicroservice.transformers.FournisseurTransformer;
+import com.example.Cataloguemicroservice.transformers.ProductTransformer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.example.Cataloguemicroservice.Repository.FournisseurRepository;
 import com.example.Cataloguemicroservice.transformers.FournisseurTransformer;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,7 +29,11 @@ import java.util.Objects;
 public class FournisseurServiceImpl implements FournisseurService {
 
 
-    private final FournisseurRepository fournisseurRepository;
+    FournisseurRepository fournisseurRepository;
+    @Autowired
+    public FournisseurServiceImpl(FournisseurRepository fournisseurRepository) {
+        this.fournisseurRepository = fournisseurRepository;
+    }
 
     @Override
     public FournisseurDTO findFournisseurByNom(String fournisseurName) {
@@ -39,7 +55,6 @@ public class FournisseurServiceImpl implements FournisseurService {
 
         Fournisseur savedEntity = fournisseurRepository.save(fournisseurentity);
         Objects.requireNonNull(savedEntity, "Saving the entity resulted in null");
-
 
         return FournisseurTransformer.transformToDTO(savedEntity);
     }
