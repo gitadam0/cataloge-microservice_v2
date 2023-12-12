@@ -34,4 +34,4 @@ build/
 
 #ignoring the confict to escape the merge conflict for the databse password
 
-/app.log
+app.log
