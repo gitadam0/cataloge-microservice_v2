@@ -1,3 +1,4 @@
+
 00:13:17.975 [main] INFO  c.e.C.CatalogueMicroserviceApplication - Starting CatalogueMicroserviceApplication using Java 21.0.1 with PID 22904 (D:\IdeaProjects\Catalogue-microservice_jobintech-gitlab\catalogue-microservice\target\classes started by admmd in D:\IdeaProjects\Catalogue-microservice_jobintech-gitlab\catalogue-microservice)
 00:13:17.984 [main] INFO  c.e.C.CatalogueMicroserviceApplication - No active profile set, falling back to 1 default profile: "default"
 00:13:20.308 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
@@ -4045,3 +4046,6 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 15:51:02.396 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 15:51:02.401 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 15:51:02.413 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+
+15:47:54.105 [org.springframework.jms.JmsListenerEndpointContainer#0-1] ERROR o.s.j.l.DefaultMessageListenerContainer - Could not refresh JMS Connection for destination 'ProductToSt' - retrying using FixedBackOff{interval=5000, currentAttempts=234, maxAttempts=unlimited}. Cause: Broker: localhost - Client: adam1 already connected from tcp://172.17.0.1:55638
+
