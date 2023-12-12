@@ -21,6 +21,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,6 +31,7 @@ public class FournisseurServiceImpl implements FournisseurService {
 
 
     FournisseurRepository fournisseurRepository;
+
     @Autowired
     public FournisseurServiceImpl(FournisseurRepository fournisseurRepository) {
         this.fournisseurRepository = fournisseurRepository;
@@ -50,10 +52,10 @@ public class FournisseurServiceImpl implements FournisseurService {
     public FournisseurDTO createFournisseur(FournisseurDTO fournisseur) {
         Objects.requireNonNull(fournisseur, "fournisseur cannot be null");
 
-        Fournisseur fournisseurentity = FournisseurTransformer.transformToEntity(fournisseur);
-        Objects.requireNonNull(fournisseurentity, "Entity transformation resulted in null");
+        Fournisseur fournisseurEntity = FournisseurTransformer.transformToEntity(fournisseur);
+        Objects.requireNonNull(fournisseurEntity, "Entity transformation resulted in null");
 
-        Fournisseur savedEntity = fournisseurRepository.save(fournisseurentity);
+        Fournisseur savedEntity = fournisseurRepository.save(fournisseurEntity);
         Objects.requireNonNull(savedEntity, "Saving the entity resulted in null");
 
         return FournisseurTransformer.transformToDTO(savedEntity);
@@ -83,12 +85,19 @@ public class FournisseurServiceImpl implements FournisseurService {
     }
 
     @Override
-    public List<Fournisseur> getFournisseurs() {
-        return null;
+    public List<FournisseurDTO> getFournisseurs() {
+        List<Fournisseur> listFournisseur = fournisseurRepository.findAll();
+
+        if (listFournisseur != null) {
+            return FournisseurTransformer.transformToListOfDTO(listFournisseur);
+        } else {
+            // Handle the case when the list is null (you can return an empty list or throw an exception, depending on your use case)
+            return Collections.emptyList(); // or throw new RuntimeException("Fournisseur list is null");
+        }
     }
 
     @Override
-    public List<Fournisseur> getFournisseurProducts(long idFournisseur, long idProduct) {
+    public List<FournisseurDTO> getFournisseurProducts(long idFournisseur, long idProduct) {
         return null;
     }
 }

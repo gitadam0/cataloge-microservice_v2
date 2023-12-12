@@ -14,8 +14,8 @@ public interface FournisseurService {
     FournisseurDTO updateFournisseur(Long id, FournisseurDTO fournisseur) throws MyEntityNotFoundException;
     void deleteFournisseur(Long id);
     FournisseurDTO getFournisseurById(Long id) throws MyEntityNotFoundException;
-    List<Fournisseur> getFournisseurs();
+    List<FournisseurDTO> getFournisseurs();
 
-    List<Fournisseur> getFournisseurProducts(long idFournisseur, long idProduct);
+    List<FournisseurDTO> getFournisseurProducts(long idFournisseur, long idProduct);
 
 }
