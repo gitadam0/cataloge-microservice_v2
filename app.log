@@ -1,1 +1,0 @@
-15:47:54.105 [org.springframework.jms.JmsListenerEndpointContainer#0-1] ERROR o.s.j.l.DefaultMessageListenerContainer - Could not refresh JMS Connection for destination 'ProductToSt' - retrying using FixedBackOff{interval=5000, currentAttempts=234, maxAttempts=unlimited}. Cause: Broker: localhost - Client: adam1 already connected from tcp://172.17.0.1:55638
