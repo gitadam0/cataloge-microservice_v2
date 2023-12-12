@@ -1,11 +1,7 @@
 package com.example.Cataloguemicroservice.Services.fournisseur;
 
 import com.example.Cataloguemicroservice.DTO.FournisseurDTO;
-import com.example.Cataloguemicroservice.DTO.ProductDTO;
-import com.example.Cataloguemicroservice.Entities.Etiquette;
 import com.example.Cataloguemicroservice.Entities.Fournisseur;
-import com.example.Cataloguemicroservice.Entities.Product;
-import com.example.Cataloguemicroservice.Entities.Variety;
 import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
 import com.example.Cataloguemicroservice.Repository.EtiquetteRepository;
 import com.example.Cataloguemicroservice.Repository.FournisseurRepository;
@@ -18,22 +14,36 @@ import com.example.Cataloguemicroservice.transformers.ProductTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.Cataloguemicroservice.Repository.FournisseurRepository;
+import com.example.Cataloguemicroservice.transformers.FournisseurTransformer;
+import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 
 @Service
+@RequiredArgsConstructor
 public class FournisseurServiceImpl implements FournisseurService {
+
 
     FournisseurRepository fournisseurRepository;
     @Autowired
     public FournisseurServiceImpl(FournisseurRepository fournisseurRepository) {
         this.fournisseurRepository = fournisseurRepository;
     }
+
     @Override
-    public Fournisseur findFournisseurByNom(String fournisseurName) {
-        return null;
+    public FournisseurDTO findFournisseurByNom(String fournisseurName) {
+        Fournisseur fournisseur = fournisseurRepository.findByNomFournisseur(fournisseurName);
+
+        if (fournisseur != null) {
+            return FournisseurTransformer.transformToDTO(fournisseur);
+        } else {
+            throw new EntityNotFoundException("Fournisseur not found");
+        }
     }
 
     @Override
@@ -62,12 +72,14 @@ public class FournisseurServiceImpl implements FournisseurService {
 
     @Override
     public void deleteFournisseur(Long id) {
-
+        fournisseurRepository.deleteById(id);
     }
 
     @Override
     public FournisseurDTO getFournisseurById(Long id) throws MyEntityNotFoundException {
-        return null;
+        Fournisseur fournisseur = fournisseurRepository.findByIdFournisseur(id);
+        Objects.requireNonNull(fournisseur, "fournisseur cannot be null");
+        return FournisseurTransformer.transformToDTO(fournisseur);
     }
 
     @Override
