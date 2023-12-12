@@ -11,6 +11,8 @@ import com.example.Cataloguemicroservice.Repository.ProductRepository;
 import com.example.Cataloguemicroservice.Repository.VarietyRepository;
 import com.example.Cataloguemicroservice.Services.Category.CategoryService;
 import com.example.Cataloguemicroservice.transformers.ProductTransformer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,8 @@ public class ProductServiceImpl implements ProductService {
     private final EtiquetteRepository etiquetteRepository;
     private final CategoryService categoryService;
     private final VarietyRepository varietyRepository;
+
+    private static final Logger logger =  LoggerFactory.getLogger(ProductServiceImpl.class);
     @Autowired
     public ProductServiceImpl(ProductRepository productRepository, EtiquetteRepository etiquetteRepository, CategoryService categoryService, VarietyRepository varietyRepository) {
         this.productRepository = productRepository;
@@ -38,9 +42,14 @@ public class ProductServiceImpl implements ProductService {
 //        return product;
 //    }
 @Override
-public ProductDTO createProduct(ProductDTO product) throws MyEntityNotFoundException {
+public ProductDTO createProduct(ProductDTO product)  {
     Product producto = ProductTransformer.transformToEntity(product);
-    producto.setCategory(categoryService.getCategoryByID(product.getCategoryID()));
+    try {
+        producto.setCategory(categoryService.getCategoryByID(product.getCategoryID()));
+    } catch (MyEntityNotFoundException e) {
+        throw new RuntimeException(e);
+    }
+    logger.info("created product with id {}"+producto.getIdProduct());
 
     return ProductTransformer.transformToDTO(productRepository.save(producto));
 }
@@ -75,6 +84,7 @@ public ProductDTO createProduct(ProductDTO product) throws MyEntityNotFoundExcep
     }
     @Override
     public List<Product> getProducts() {
+        logger.info("Getting all orders");
         //return ProductTransformer.transformListToDTOList(productRepository.findAll()) ;
         return productRepository.findAll() ;
     }

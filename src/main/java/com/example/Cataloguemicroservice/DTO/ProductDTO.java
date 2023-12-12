@@ -13,14 +13,16 @@ public class ProductDTO {
     /*@NotBlank(message = "Product name is required")
     private String nomProduct;*/
     private Long idProduct;
+    private String reference;
     private String name;
     private String description;
     private double prixProduct;
     private Long categoryID;
 
-    public ProductDTO(Long idProduct,String name, String description, double prixProduct, Long categoryID) {
+    public ProductDTO(Long idProduct,String name,String reference, String description, double prixProduct, Long categoryID) {
         this.idProduct = idProduct;
         this.name = name;
+        this.reference = reference;
         this.description = description;
         this.prixProduct = prixProduct;
         this.categoryID = categoryID;

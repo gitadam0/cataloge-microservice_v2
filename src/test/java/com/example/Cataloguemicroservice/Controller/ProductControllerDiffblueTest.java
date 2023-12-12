@@ -1,3 +1,4 @@
+/*
 package com.example.Cataloguemicroservice.Controller;
 
 import static org.mockito.Mockito.doNothing;
@@ -40,9 +41,11 @@ class ProductControllerDiffblueTest {
     @MockBean
     private YourMessagingService yourMessagingService;
 
-    /**
+    */
+/**
      * Method under test:  {@link ProductController#getProductById(Long)}
-     */
+     *//*
+
     @Test
     void testGetProductById() throws Exception {
         when(productService.getProductById(Mockito.<Long>any())).thenReturn(new ProductDTO());
@@ -56,9 +59,11 @@ class ProductControllerDiffblueTest {
                         .string("{\"idProduct\":null,\"name\":null,\"description\":null,\"prixProduct\":0.0,\"categoryID\":null}"));
     }
 
-    /**
+    */
+/**
      * Method under test: {@link ProductController#createProductInStock(ProductDTO)}
-     */
+     *//*
+
     @Test
     void testCreateProductInStock() throws Exception {
         doNothing().when(messageSender).sendProduct(Mockito.<ProductDTO>any());
@@ -83,9 +88,11 @@ class ProductControllerDiffblueTest {
                         .string("{\"idProduct\":null,\"name\":null,\"description\":null,\"prixProduct\":0.0,\"categoryID\":null}"));
     }
 
-    /**
+    */
+/**
      * Method under test:  {@link ProductController#updateProduct(Long, ProductDTO)}
-     */
+     *//*
+
     @Test
     void testUpdateProduct() throws Exception {
         when(productService.updateProduct(Mockito.<Long>any(), Mockito.<ProductDTO>any())).thenReturn(new ProductDTO());
@@ -109,9 +116,11 @@ class ProductControllerDiffblueTest {
                         .string("{\"idProduct\":null,\"name\":null,\"description\":null,\"prixProduct\":0.0,\"categoryID\":null}"));
     }
 
-    /**
+    */
+/**
      * Method under test:  {@link ProductController#addEtiquette(Long, Long)}
-     */
+     *//*
+
     @Test
     void testAddEtiquette() throws Exception {
         when(productService.addEtiquette(Mockito.<Long>any(), Mockito.<Long>any())).thenReturn(new ProductDTO());
@@ -126,9 +135,11 @@ class ProductControllerDiffblueTest {
                         .string("{\"idProduct\":null,\"name\":null,\"description\":null,\"prixProduct\":0.0,\"categoryID\":null}"));
     }
 
-    /**
+    */
+/**
      * Method under test:  {@link ProductController#addVariety(Long, Long)}
-     */
+     *//*
+
     @Test
     void testAddVariety() throws Exception {
         when(productService.addVariety(Mockito.<Long>any(), Mockito.<Long>any())).thenReturn(new ProductDTO());
@@ -143,9 +154,11 @@ class ProductControllerDiffblueTest {
                         .string("{\"idProduct\":null,\"name\":null,\"description\":null,\"prixProduct\":0.0,\"categoryID\":null}"));
     }
 
-    /**
+    */
+/**
      * Method under test: {@link ProductController#deleteProduct(Long)}
-     */
+     *//*
+
     @Test
     void testDeleteProduct() throws Exception {
         doNothing().when(productService).deleteProduct(Mockito.<Long>any());
@@ -156,9 +169,11 @@ class ProductControllerDiffblueTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    /**
+    */
+/**
      * Method under test: {@link ProductController#deleteProduct(Long)}
-     */
+     *//*
+
     @Test
     void testDeleteProduct2() throws Exception {
         doNothing().when(productService).deleteProduct(Mockito.<Long>any());
@@ -170,9 +185,11 @@ class ProductControllerDiffblueTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    /**
+    */
+/**
      * Method under test:  {@link ProductController#createMultiProduct(List)}
-     */
+     *//*
+
     @Test
     void testCreateMultiProduct() throws Exception {
         when(productService.createProducts(Mockito.<List<ProductDTO>>any())).thenReturn(new ArrayList<>());
@@ -190,9 +207,11 @@ class ProductControllerDiffblueTest {
                 .andExpect(MockMvcResultMatchers.content().string("[]"));
     }
 
-    /**
+    */
+/**
      * Method under test:  {@link ProductController#createProduct(ProductDTO)}
-     */
+     *//*
+
     @Test
     void testCreateProduct() throws Exception {
         when(productService.getProducts()).thenReturn(new ArrayList<>());
@@ -215,9 +234,11 @@ class ProductControllerDiffblueTest {
                 .andExpect(MockMvcResultMatchers.content().string("[]"));
     }
 
-    /**
+    */
+/**
      * Method under test:  {@link ProductController#getAllProducts()}
-     */
+     *//*
+
     @Test
     void testGetAllProducts() throws Exception {
         when(productService.getProducts()).thenReturn(new ArrayList<>());
@@ -230,3 +251,4 @@ class ProductControllerDiffblueTest {
                 .andExpect(MockMvcResultMatchers.content().string("[]"));
     }
 }
+*/

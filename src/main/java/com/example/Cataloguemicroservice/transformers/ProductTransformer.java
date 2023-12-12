@@ -25,6 +25,7 @@ public class ProductTransformer {
         productDTO.setName(product.getNomProduct());
         productDTO.setIdProduct(product.getIdProduct());
         productDTO.setDescription(product.getDescription());
+        productDTO.setReference(product.getReference());
         productDTO.setCategoryID(product.getCategory().getIdCategory());
 
         productDTO.setPrixProduct(product.getPrixProduct());
@@ -41,6 +42,7 @@ public class ProductTransformer {
         Product product = new Product();
         product.setIdProduct(productDTO.getIdProduct());
         product.setNomProduct(productDTO.getName());
+        product.setReference(productDTO.getReference());
         product.setDescription(productDTO.getDescription());
         product.setPrixProduct(productDTO.getPrixProduct());
             Category category = new Category();

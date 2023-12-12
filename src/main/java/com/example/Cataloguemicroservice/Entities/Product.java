@@ -19,10 +19,14 @@ public class Product implements Serializable {
     private String nomProduct;
 //    @Column(nullable = false)
     private String description;
+    private String reference;
     private double prixProduct;
 
     @ManyToOne
     private Category category;
+
+    @ManyToOne
+    private Fournisseur fournisseur;
 
     @ManyToMany
     @JoinTable(

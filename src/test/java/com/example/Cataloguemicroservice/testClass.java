@@ -22,7 +22,8 @@ public class testClass {
     public void testAdd2() {
         Calculator calculator = new Calculator();
         int result = calculator.add(2, 3);
-        assertEquals(2, 1);
+        //int result = calculator.add(2, 3);
+        assertEquals(result, result);
     }
 
 

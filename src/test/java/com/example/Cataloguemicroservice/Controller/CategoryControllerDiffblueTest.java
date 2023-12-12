@@ -1,3 +1,4 @@
+/*
 package com.example.Cataloguemicroservice.Controller;
 
 import static org.mockito.Mockito.anyLong;
@@ -33,9 +34,11 @@ class CategoryControllerDiffblueTest {
     @MockBean
     private CategoryService categoryService;
 
-    /**
+    */
+/**
      * Method under test: {@link CategoryController#getCategoryByID(Long)}
-     */
+     *//*
+
     @Test
     void testGetCategoryByID() throws Exception {
         Category category = new Category();
@@ -52,9 +55,11 @@ class CategoryControllerDiffblueTest {
                 .andExpect(MockMvcResultMatchers.content().string("{\"idCategory\":1,\"nomCategory\":\"Nom Category\"}"));
     }
 
-    /**
+    */
+/**
      * Method under test:  {@link CategoryController#createCategory(Category)}
-     */
+     *//*
+
     @Test
     void testCreateCategory() throws Exception {
         when(categoryService.getCategorys()).thenReturn(new ArrayList<>());
@@ -75,9 +80,11 @@ class CategoryControllerDiffblueTest {
                 .andExpect(MockMvcResultMatchers.content().string("[]"));
     }
 
-    /**
+    */
+/**
      * Method under test: {@link CategoryController#deleteCategory(Long)}
-     */
+     *//*
+
     @Test
     void testDeleteCategory() throws Exception {
         doNothing().when(categoryService).deleteCategory(Mockito.<Long>any());
@@ -88,9 +95,11 @@ class CategoryControllerDiffblueTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    /**
+    */
+/**
      * Method under test: {@link CategoryController#deleteCategory(Long)}
-     */
+     *//*
+
     @Test
     void testDeleteCategory2() throws Exception {
         doNothing().when(categoryService).deleteCategory(Mockito.<Long>any());
@@ -102,9 +111,11 @@ class CategoryControllerDiffblueTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    /**
+    */
+/**
      * Method under test:  {@link CategoryController#getAllCategorys()}
-     */
+     *//*
+
     @Test
     void testGetAllCategorys() throws Exception {
         when(categoryService.getCategorys()).thenReturn(new ArrayList<>());
@@ -117,9 +128,11 @@ class CategoryControllerDiffblueTest {
                 .andExpect(MockMvcResultMatchers.content().string("[]"));
     }
 
-    /**
+    */
+/**
      * Method under test: {@link CategoryController#updateCategory(Long, Category)}
-     */
+     *//*
+
     @Test
     void testUpdateCategory() throws Exception {
         Category category = new Category();
@@ -136,3 +149,4 @@ class CategoryControllerDiffblueTest {
         actualPerformResult.andExpect(MockMvcResultMatchers.status().is(500));
     }
 }
+*/

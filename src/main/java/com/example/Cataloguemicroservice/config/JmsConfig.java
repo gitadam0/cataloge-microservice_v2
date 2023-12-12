@@ -40,7 +40,7 @@ public class JmsConfig {
     public JmsListenerContainerFactory<?> jmsListenerContainerFactory(ConnectionFactory connectionFactory) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
-        factory.setClientId("adam");
+        factory.setClientId("adam1");
         return factory;
     }
     @Bean
