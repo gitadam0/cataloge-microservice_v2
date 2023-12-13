@@ -2,7 +2,7 @@ package com.example.Cataloguemicroservice.transformers;
 
 import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.example.Cataloguemicroservice.Entities.Category;
-import com.example.Cataloguemicroservice.Entities.Fournisseur;
+import com.example.Cataloguemicroservice.Entities.Supplier;
 import com.example.Cataloguemicroservice.Entities.Product;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class ProductTransformer {
         productDTO.setDescription(product.getDescription());
         productDTO.setReference(product.getReference());
         productDTO.setCategoryID(product.getCategory().getIdCategory());
-        productDTO.setFournisseurID(product.getFournisseur().getIdFournisseur());
+        productDTO.setSupplierID(product.getSupplier().getIdSupplier());
         productDTO.setPrixProduct(product.getPrixProduct());
 
         return productDTO;
@@ -52,11 +52,11 @@ public class ProductTransformer {
             product.setCategory(category);
 
 
-        Fournisseur fournisseur = new Fournisseur();
-        fournisseur.setIdFournisseur(productDTO.getFournisseurID());
-        product.setFournisseur(fournisseur);
+        Supplier supplier = new Supplier();
+        supplier.setIdSupplier(productDTO.getSupplierID());
+        product.setSupplier(supplier);
 
-        //product.setFournisseur();
+        //product.setSupplier();
 
         return product;
     }

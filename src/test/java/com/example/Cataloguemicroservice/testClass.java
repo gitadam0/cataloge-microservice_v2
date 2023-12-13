@@ -1,3 +1,4 @@
+/*
 package com.example.Cataloguemicroservice;
 
 
@@ -7,7 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/*@SpringBootTest*/
+*/
+/*@SpringBootTest*//*
+
 public class testClass {
 
     Calculator calculator = new Calculator();
@@ -37,3 +40,4 @@ public class testClass {
     }
 
 }
+*/

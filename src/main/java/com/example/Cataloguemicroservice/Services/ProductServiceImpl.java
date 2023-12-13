@@ -71,7 +71,7 @@ public ProductDTO createProduct(ProductDTO product)  {
         existingProduct.setVarieties(updatedProduct.getVarieties());
         existingProduct.setEtiquettes(updatedProduct.getEtiquettes());
         existingProduct.setCategory(updatedProduct.getCategory());
-        existingProduct.setFournisseur(updatedProduct.getFournisseur());
+        existingProduct.setSupplier(updatedProduct.getSupplier());
         productRepository.save(existingProduct);
         return updatedProductDTO;
     }

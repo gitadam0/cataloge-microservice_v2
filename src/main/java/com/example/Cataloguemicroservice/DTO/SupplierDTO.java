@@ -13,14 +13,14 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class FournisseurDTO {
+public class SupplierDTO {
 
-    private Long idFournisseur;
-    private String nomFournisseur;
+    private Long idSupplier;
+    private String nomSupplier;
 
-    public FournisseurDTO(Long idFournisseur,String nomFournisseur) {
-        this.idFournisseur = idFournisseur;
-        this.nomFournisseur = nomFournisseur;
+    public SupplierDTO(Long idFournisseur,String nomSupplier) {
+        this.idSupplier = idSupplier;
+        this.nomSupplier = nomSupplier;
     }
 
 }

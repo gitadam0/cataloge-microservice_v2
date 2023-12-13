@@ -9,15 +9,15 @@ import java.util.List;
 import java.util.Set;
 @Entity
 @Data
-@Table(name = "fournisseurs")
+@Table(name = "SupplierS")
 @NoArgsConstructor
-public class Fournisseur {
+public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idFournisseur;
-    private String nomFournisseur;
+    private Long idSupplier;
+    private String nomSupplier;
 
-    @OneToMany(mappedBy = "fournisseur")
+    @OneToMany(mappedBy = "supplier")
     private List<Product> products;
 
 }

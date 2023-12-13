@@ -3,6 +3,7 @@ package com.example.Cataloguemicroservice.Services;
 import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.example.Cataloguemicroservice.Entities.Category;
 import com.example.Cataloguemicroservice.Entities.Product;
+import com.example.Cataloguemicroservice.Entities.Supplier;
 import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
 import com.example.Cataloguemicroservice.Repository.ProductRepository;
 import com.example.Cataloguemicroservice.Services.Category.CategoryService;
@@ -33,6 +34,8 @@ class ProductServiceImplTest {
     void createProduct() throws MyEntityNotFoundException {
         Category category = new Category();
         category.setIdCategory(1L);
+        Supplier supplier = new Supplier();
+        supplier.setIdSupplier(1L);
 
         Product p1 = new Product();
         p1.setNomProduct("adam");
@@ -42,6 +45,7 @@ class ProductServiceImplTest {
         p1.setIdProduct(1L);
         p1.setNomProduct("adam");
         p1.setCategory(category);
+        p1.setSupplier(supplier);
 
         ProductDTO p1Dto = new ProductDTO();
         p1Dto.setIdProduct(1L);
@@ -76,14 +80,19 @@ class ProductServiceImplTest {
     void getProductById() throws MyEntityNotFoundException {
         Category category = new Category();
         category.setIdCategory(1L);
+        Supplier supplier = new Supplier();
+        supplier.setIdSupplier(1L);
+
         Product p1 = new Product();
         p1.setIdProduct(1L);
         p1.setNomProduct("adam");
         p1.setCategory(category);
+        p1.setSupplier(supplier);
         Product p2 = new Product();
         p2.setIdProduct(2L);
         p2.setNomProduct("adam");
         p2.setCategory(category);
+        p2.setSupplier(supplier);
 
         List<Product> products = Arrays.asList(p1, p2);
         when(productRepository.findById(1L)).thenReturn(Optional.ofNullable(products.get(0)));

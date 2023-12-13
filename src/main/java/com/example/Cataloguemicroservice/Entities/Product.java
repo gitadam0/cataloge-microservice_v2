@@ -28,7 +28,7 @@ public class Product implements Serializable {
 
     @ManyToOne
     @JsonIgnore
-    private Fournisseur fournisseur;
+    private Supplier supplier;
 
     @ManyToMany
     @JoinTable(
