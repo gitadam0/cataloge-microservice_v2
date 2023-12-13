@@ -1,8 +1,10 @@
 package com.example.Cataloguemicroservice.Services.supplier;
 
+import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.example.Cataloguemicroservice.DTO.SupplierDTO;
 import com.example.Cataloguemicroservice.Entities.Supplier;
 import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
+import com.example.Cataloguemicroservice.transformers.ProductTransformer;
 import com.example.Cataloguemicroservice.transformers.SupplierTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -85,11 +87,20 @@ public class SupplierServiceImpl implements SupplierService {
         }
     }
 
+//    @Override
+//    public Supplier getSupplierProducts(long idSupplier) throws MyEntityNotFoundException {
+//        return supplierRepository.findSupplierWithProductsByIdSupplier(idSupplier)
+//                .orElseThrow(()->new MyEntityNotFoundException("fournisser not found for id "+idSupplier));
+//    }
+
     @Override
-    public Supplier getSupplierProducts(long idSupplier) throws MyEntityNotFoundException {
-        return supplierRepository.findSupplierWithProductsByIdSupplier(idSupplier)
-                .orElseThrow(()->new MyEntityNotFoundException("fournisser not found for id "+idSupplier));
+    public List<ProductDTO> getSupplierProducts(long idSupplier) {
+
+        List<ProductDTO> listProducts = ProductTransformer.transformListToDTOList(supplierRepository.findProductsByIdSupplier(idSupplier));
+        if (listProducts != null) {
+            return listProducts;
+        } else {
+            return Collections.emptyList();
+        }
     }
-
-
 }

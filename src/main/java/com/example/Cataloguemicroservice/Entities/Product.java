@@ -27,7 +27,7 @@ public class Product implements Serializable {
     private Category category;
 
     @ManyToOne
-    @JsonIgnore
+//    @JsonIgnore
     private Supplier supplier;
 
     @ManyToMany

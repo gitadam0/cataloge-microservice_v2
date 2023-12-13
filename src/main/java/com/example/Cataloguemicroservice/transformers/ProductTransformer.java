@@ -7,12 +7,13 @@ import com.example.Cataloguemicroservice.Entities.Product;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 /*If your transformation logic involves complex mapping, requires customization for individual fields, or
 needs to perform additional processing, a dedicated transformer class provides a clear place to
 encapsulate this logic.*/
 public class ProductTransformer {
 
-//    public static ProductDTO transformToDTO(Product product) {
+    //    public static ProductDTO transformToDTO(Product product) {
 //        ProductDTO productDTO = new ProductDTO();
 //        productDTO.setName(product.getNomProduct());
 //        productDTO.setDescription(product.getDescription());
@@ -33,12 +34,14 @@ public class ProductTransformer {
 
         return productDTO;
     }
+
     // You can also create a method for transforming a list of products to a list of DTOs
     public static List<ProductDTO> transformListToDTOList(List<Product> productList) {
         return productList.stream()
                 .map(ProductTransformer::transformToDTO)
                 .collect(Collectors.toList());
     }
+
     public static Product transformToEntity(ProductDTO productDTO) {
         Product product = new Product();
         product.setIdProduct(productDTO.getIdProduct());
@@ -47,9 +50,9 @@ public class ProductTransformer {
         product.setDescription(productDTO.getDescription());
         product.setPrixProduct(productDTO.getPrixProduct());
 
-            Category category = new Category();
-            category.setIdCategory(productDTO.getCategoryID());
-            product.setCategory(category);
+        Category category = new Category();
+        category.setIdCategory(productDTO.getCategoryID());
+        product.setCategory(category);
 
 
         Supplier supplier = new Supplier();

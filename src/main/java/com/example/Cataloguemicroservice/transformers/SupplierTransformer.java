@@ -13,6 +13,7 @@ public class SupplierTransformer {
         SupplierDTO fournisseurDTO = new SupplierDTO();
         fournisseurDTO.setIdSupplier(fournisseur.getIdSupplier());
         fournisseurDTO.setNomSupplier(fournisseur.getNomSupplier());
+        fournisseurDTO.setProducts(fournisseur.getProducts());
         return fournisseurDTO;
     }
 
@@ -24,6 +25,7 @@ public class SupplierTransformer {
         Supplier fournisseur = new Supplier();
         fournisseur.setIdSupplier(fournisseurDTO.getIdSupplier());
         fournisseur.setNomSupplier(fournisseurDTO.getNomSupplier());
+        fournisseur.setProducts(fournisseurDTO.getProducts());
         return fournisseur;
     }
 

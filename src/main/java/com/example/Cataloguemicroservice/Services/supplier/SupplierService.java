@@ -1,5 +1,6 @@
 package com.example.Cataloguemicroservice.Services.supplier;
 
+import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.example.Cataloguemicroservice.DTO.SupplierDTO;
 import com.example.Cataloguemicroservice.Entities.Supplier;
 import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
@@ -16,6 +17,6 @@ public interface SupplierService {
     SupplierDTO getSupplierById(Long id) throws MyEntityNotFoundException;
     List<SupplierDTO> getSuppliers();
 
-    Supplier getSupplierProducts(long idSupplier) throws MyEntityNotFoundException;
+    List<ProductDTO> getSupplierProducts(long idSupplier) throws MyEntityNotFoundException;
 
 }

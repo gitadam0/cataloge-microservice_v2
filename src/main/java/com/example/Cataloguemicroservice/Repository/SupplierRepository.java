@@ -1,5 +1,7 @@
 package com.example.Cataloguemicroservice.Repository;
 
+import com.example.Cataloguemicroservice.DTO.ProductDTO;
+import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Entities.Supplier;
 import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,5 +15,8 @@ public interface SupplierRepository extends JpaRepository<Supplier, Long> {
     Supplier findByIdSupplier(long id) throws MyEntityNotFoundException;
     //Supplier findSupplierWithProductsByIdSupplier(long id);
     Optional<Supplier> findSupplierWithProductsByIdSupplier(long id);
+    List<Product> findProductsByIdSupplier(long idFournisseur);
+
+
 }
 

@@ -1,5 +1,6 @@
 package com.example.Cataloguemicroservice.Controller;
 
+import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.example.Cataloguemicroservice.DTO.SupplierDTO;
 import com.example.Cataloguemicroservice.Entities.Supplier;
 import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
@@ -30,8 +31,12 @@ public class SupplierController {
     public SupplierDTO getSupplierByID(@PathVariable Long id) throws MyEntityNotFoundException {
         return supplierService.getSupplierById(id);
     }
-    @GetMapping("getSupplierByIdWithProducts./{id}")
-    public Supplier getSupplierByIDWithProducts(@PathVariable Long id) throws MyEntityNotFoundException {
+//    @GetMapping("getSupplierByIdWithProducts./{id}")
+//    public Supplier getSupplierByIDWithProducts(@PathVariable Long id) throws MyEntityNotFoundException {
+//        return supplierService.getSupplierWithProducts(id);
+//    }
+    @GetMapping("/{id}/products")
+    public List<ProductDTO> getSupplierProducts(@PathVariable Long id) throws MyEntityNotFoundException {
         return supplierService.getSupplierProducts(id);
     }
     @Autowired

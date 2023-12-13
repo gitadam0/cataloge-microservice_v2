@@ -17,10 +17,11 @@ public class SupplierDTO {
 
     private Long idSupplier;
     private String nomSupplier;
-
-    public SupplierDTO(Long idFournisseur,String nomSupplier) {
+    private List<Product> products;
+    public SupplierDTO(Long idFournisseur,String nomSupplier, List<Product> products) {
         this.idSupplier = idSupplier;
         this.nomSupplier = nomSupplier;
+        this.products = products;
     }
 
 }
