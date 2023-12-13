@@ -9,24 +9,31 @@ import com.example.Cataloguemicroservice.Entities.Product;
 import java.util.List;
 
 public class SupplierTransformer {
-    public static SupplierDTO transformToDTO(Supplier fournisseur) {
-        SupplierDTO fournisseurDTO = new SupplierDTO();
-        fournisseurDTO.setIdSupplier(fournisseur.getIdSupplier());
-        fournisseurDTO.setNomSupplier(fournisseur.getNomSupplier());
-        fournisseurDTO.setProducts(fournisseur.getProducts());
-        return fournisseurDTO;
+    public static SupplierDTO transformToDTO(Supplier supplier) {
+        SupplierDTO supplierDTO = new SupplierDTO();
+        supplierDTO.setIdSupplier(supplier.getIdSupplier());
+        supplierDTO.setNomSupplier(supplier.getNomSupplier());
+        supplierDTO.setRib(supplier.getRib());
+        supplierDTO.setMail(supplier.getMail());
+        supplierDTO.setPhoneNumber(supplier.getPhoneNumber());
+        supplierDTO.setNomSupplier(supplier.getNomSupplier());
+        supplierDTO.setProducts(supplier.getProducts());
+        return supplierDTO;
     }
 
     public static List<SupplierDTO> transformToListOfDTO(List<Supplier> fournisseurs) {
         return fournisseurs.stream().map(SupplierTransformer::transformToDTO).collect(java.util.stream.Collectors.toList());
     }
 
-    public static Supplier transformToEntity(SupplierDTO fournisseurDTO) {
-        Supplier fournisseur = new Supplier();
-        fournisseur.setIdSupplier(fournisseurDTO.getIdSupplier());
-        fournisseur.setNomSupplier(fournisseurDTO.getNomSupplier());
-        fournisseur.setProducts(fournisseurDTO.getProducts());
-        return fournisseur;
+    public static Supplier transformToEntity(SupplierDTO supplierDTO) {
+        Supplier supplier = new Supplier();
+        supplier.setIdSupplier(supplierDTO.getIdSupplier());
+        supplier.setNomSupplier(supplierDTO.getNomSupplier());
+        supplier.setRib(supplierDTO.getRib());
+        supplier.setMail(supplierDTO.getMail());
+        supplier.setPhoneNumber(supplierDTO.getPhoneNumber());
+        supplier.setProducts(supplierDTO.getProducts());
+        return supplier;
     }
 
     public static List<Supplier> transformToListOfEntity(List<SupplierDTO> fournisseurDTOs) {

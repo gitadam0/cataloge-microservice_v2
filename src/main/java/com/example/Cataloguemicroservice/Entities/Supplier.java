@@ -16,6 +16,9 @@ public class Supplier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSupplier;
     private String nomSupplier;
+    private String mail;
+    private String rib;
+    private String phoneNumber;
 
     @OneToMany(mappedBy = "supplier")
     @JsonIgnore

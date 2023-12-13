@@ -17,10 +17,16 @@ public class SupplierDTO {
 
     private Long idSupplier;
     private String nomSupplier;
+    private String mail;
+    private String rib;
+    private String phoneNumber;
     private List<Product> products;
-    public SupplierDTO(Long idFournisseur,String nomSupplier, List<Product> products) {
+    public SupplierDTO(Long idSupplier,String nomSupplier, List<Product> products, String mail,String rib,String phoneNumber) {
         this.idSupplier = idSupplier;
         this.nomSupplier = nomSupplier;
+        this.mail = mail;
+        this.rib = rib;
+        this.phoneNumber = phoneNumber;
         this.products = products;
     }
 

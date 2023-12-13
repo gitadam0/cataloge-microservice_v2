@@ -29,12 +29,16 @@ public class ProductServiceImpl implements ProductService {
 
     private static final Logger logger =  LoggerFactory.getLogger(ProductServiceImpl.class);
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository, EtiquetteRepository etiquetteRepository, CategoryService categoryService, VarietyRepository varietyRepository) {
+    public ProductServiceImpl(
+            ProductRepository productRepository, EtiquetteRepository etiquetteRepository,
+            CategoryService categoryService, VarietyRepository varietyRepository
+    ) {
         this.productRepository = productRepository;
         this.etiquetteRepository = etiquetteRepository;
         this.categoryService = categoryService;
         this.varietyRepository = varietyRepository;
     }
+
 //    @Override
 //    public ProductDTO createProduct(ProductDTO product) throws EntityNotFoundException {
 //        //solution for the category object name raltion with the product
@@ -51,8 +55,6 @@ public ProductDTO createProduct(ProductDTO product)  {
         throw new RuntimeException(e);
     }
     logger.info("created product with id {}"+producto.getIdProduct());
-
-
     return ProductTransformer.transformToDTO(productRepository.save(producto));
 }
 
