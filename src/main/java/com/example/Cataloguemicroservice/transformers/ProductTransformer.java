@@ -31,6 +31,7 @@ public class ProductTransformer {
         productDTO.setCategoryID(product.getCategory().getIdCategory());
         productDTO.setSupplierID(product.getSupplier().getIdSupplier());
         productDTO.setPrixProduct(product.getPrixProduct());
+        productDTO.setQuantity(product.getQuantity());
 
         return productDTO;
     }
@@ -49,6 +50,7 @@ public class ProductTransformer {
         product.setReference(productDTO.getReference());
         product.setDescription(productDTO.getDescription());
         product.setPrixProduct(productDTO.getPrixProduct());
+        product.setQuantity(productDTO.getQuantity());
 
         Category category = new Category();
         category.setIdCategory(productDTO.getCategoryID());
@@ -58,6 +60,8 @@ public class ProductTransformer {
         Supplier supplier = new Supplier();
         supplier.setIdSupplier(productDTO.getSupplierID());
         product.setSupplier(supplier);
+
+
 
         //product.setSupplier();
 

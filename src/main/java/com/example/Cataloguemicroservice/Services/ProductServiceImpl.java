@@ -1,6 +1,7 @@
 package com.example.Cataloguemicroservice.Services;
 
 import com.example.Cataloguemicroservice.DTO.ProductDTO;
+import com.example.Cataloguemicroservice.DTO.StockProductDTO;
 import com.example.Cataloguemicroservice.Entities.Category;
 import com.example.Cataloguemicroservice.Entities.Etiquette;
 import com.example.Cataloguemicroservice.Entities.Product;
@@ -54,6 +55,9 @@ public ProductDTO createProduct(ProductDTO product)  {
     } catch (MyEntityNotFoundException e) {
         throw new RuntimeException(e);
     }
+    /*if(productRepository.findProductByReference(product.getReference())==null ){
+
+    }*/
     logger.info("created product with id {}"+producto.getIdProduct());
     return ProductTransformer.transformToDTO(productRepository.save(producto));
 }
@@ -77,6 +81,17 @@ public ProductDTO createProduct(ProductDTO product)  {
         productRepository.save(existingProduct);
         return updatedProductDTO;
     }
+
+
+    @Override
+    public ProductDTO updateProductStock(String ref, StockProductDTO stockProductDTO) throws MyEntityNotFoundException {
+        Product existingProduct = productRepository.findProductByReference(ref)
+                .orElseThrow(() -> new MyEntityNotFoundException("Product not found with ref : " + ref));
+
+        existingProduct.setQuantity(stockProductDTO.getQuantity());
+        return ProductTransformer.transformToDTO(productRepository.save(existingProduct));
+    }
+
     @Override
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);

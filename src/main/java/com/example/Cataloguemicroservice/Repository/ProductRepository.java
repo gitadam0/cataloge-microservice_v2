@@ -24,6 +24,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findByNomProductContains(String keyword);
 */
     Product findProductBynomProduct(String nomProduct);
+    Optional<Product> findProductByReference(String ref);
 
     List<Product> findAllByVarietiesIsEmpty();
 

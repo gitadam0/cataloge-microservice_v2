@@ -19,6 +19,7 @@ public class ProductDTO {
     private double prixProduct;
     private Long categoryID;
     private Long  supplierID;
+    private Long quantity;
 
     public ProductDTO(Long idProduct,String name,String reference, String description, double prixProduct, Long categoryID) {
         this.idProduct = idProduct;

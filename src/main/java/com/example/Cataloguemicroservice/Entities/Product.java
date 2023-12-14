@@ -20,8 +20,10 @@ public class Product implements Serializable {
     private String nomProduct;
 //    @Column(nullable = false)
     private String description;
+    @Column(unique = true)
     private String reference;
     private double prixProduct;
+    private Long quantity;
 
     @ManyToOne
     private Category category;
