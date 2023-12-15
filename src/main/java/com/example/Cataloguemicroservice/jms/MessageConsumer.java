@@ -6,11 +6,15 @@ import com.example.Cataloguemicroservice.Services.MessagingService.YourMessaging
 import com.example.Cataloguemicroservice.Services.ProductService;
 import com.example.Cataloguemicroservice.Services.ProductServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
+@Slf4j
 public class MessageConsumer {
     private final ProductService productService;
 
@@ -19,14 +23,17 @@ public class MessageConsumer {
         this.productService = productService;
     }
     @JmsListener(destination = "newStockArrived", containerFactory = "jmsListenerContainerFactory")
-    public void receiveProduct(String message) {
+    public void receiveListProduct(String message) {
         System.out.println("Message reçu du topic : " + message);
 
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            StockProductDTO[] stockProductDTO = objectMapper.readValue(message, StockProductDTO[].class);
-                productService.updateProductStock(stockProductDTO[0].getRef(),stockProductDTO[0]);
-                System.out.println("Reference: " + stockProductDTO[0].getRef() + ", Quantity: " + stockProductDTO[0].getQuantity());
+            List<StockProductDTO> stockProductDTO = List.of(objectMapper.readValue(message, StockProductDTO[].class));
+
+            for (StockProductDTO productDTO : stockProductDTO) {
+                log.info("Reference: " + productDTO.getRef() + ", Quantity: " + productDTO.getQuantity());
+                productService.updateProductStock(productDTO.getRef(),productDTO);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -50,20 +50,29 @@ public class ProductServiceImpl implements ProductService {
 @Override
 public ProductDTO createProduct(ProductDTO product)  {
     Product producto = ProductTransformer.transformToEntity(product);
+    if(productRepository.findProductByReference(product.getReference()).isPresent()){
+        throw new RuntimeException("product  already exists for ref:"+product.getReference());
+    }
     try {
         producto.setCategory(categoryService.getCategoryByID(product.getCategoryID()));
     } catch (MyEntityNotFoundException e) {
         throw new RuntimeException(e);
     }
-    /*if(productRepository.findProductByReference(product.getReference())==null ){
-
-    }*/
     logger.info("created product with id {}"+producto.getIdProduct());
     return ProductTransformer.transformToDTO(productRepository.save(producto));
 }
 
     @Override
     public List<ProductDTO> createProducts(List<ProductDTO> products) {
+        for (ProductDTO product : products) {
+
+            /*if(productRepository.findProductByReference(product.getReference()).isPresent()){
+                throw new RuntimeException("product  already exists for ref:"+product.getReference());
+            }*/
+           /* if(productRepository.doesProductExistByReference(product.getReference())){
+                throw new RuntimeException("product  already exists for ref:"+product.getReference());
+            }*/
+        }
         productRepository.saveAll(ProductTransformer.transformListToEntityList(products));
         return products;
     }

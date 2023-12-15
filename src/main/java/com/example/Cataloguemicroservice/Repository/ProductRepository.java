@@ -25,7 +25,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 */
     Product findProductBynomProduct(String nomProduct);
     Optional<Product> findProductByReference(String ref);
-
+    //Boolean doesProductExistByReference(String reference);
     List<Product> findAllByVarietiesIsEmpty();
 
 
