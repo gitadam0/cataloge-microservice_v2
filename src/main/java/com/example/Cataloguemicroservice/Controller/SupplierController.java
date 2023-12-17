@@ -28,7 +28,7 @@ public class SupplierController {
     }
 
     @GetMapping("/{id}")
-    public SupplierDTO getSupplierByID(@PathVariable Long id) throws MyEntityNotFoundException {
+    public Supplier getSupplierByID(@PathVariable Long id) throws MyEntityNotFoundException {
         return supplierService.getSupplierById(id);
     }
 //    @GetMapping("getSupplierByIdWithProducts./{id}")

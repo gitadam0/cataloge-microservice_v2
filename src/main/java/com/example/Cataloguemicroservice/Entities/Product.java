@@ -1,49 +1,45 @@
 package com.example.Cataloguemicroservice.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
-@Entity
+
 @Data
-@Table(name = "products")
+@Document("Products")
 @NoArgsConstructor
 public class Product implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProduct;
     private String nomProduct;
 //    @Column(nullable = false)
     private String description;
-    //not working
-    @Column(unique = true,nullable = false)
+
+    @Indexed(unique = true)
     private String reference;
     private double prixProduct;
     private Long quantity;
 
-    @ManyToOne
+
+    @DBRef
     private Category category;
 
-    @ManyToOne
-//    @JsonIgnore
+    @DBRef
     private Supplier supplier;
 
-    @ManyToMany
-    @JoinTable(
-            name = "product_etiquette",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "etiquette_id"))
-    private Set<Etiquette> etiquettes;
-    @ManyToMany
-    @JoinTable(
-            name = "product_variety",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "variety_id"))
-    private Set<Variety> varieties;
+    @DBRef
+    private List<Etiquette> etiquettes;
+
+    @DBRef
+    private List<Variety> varieties;
 
 }

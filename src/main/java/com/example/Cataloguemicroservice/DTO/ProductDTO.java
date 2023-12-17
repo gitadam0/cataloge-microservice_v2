@@ -1,7 +1,6 @@
 package com.example.Cataloguemicroservice.DTO;
 
 import com.example.Cataloguemicroservice.Entities.Product;
-import jakarta.persistence.Column;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

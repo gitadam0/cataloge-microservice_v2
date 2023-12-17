@@ -8,13 +8,13 @@ import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
 import java.util.List;
 
 public interface SupplierService {
-    SupplierDTO findSupplierByNom(String supplierName);
+    SupplierDTO findSupplierByNom(String supplierName) throws MyEntityNotFoundException;
 
     SupplierDTO createSupplier(SupplierDTO supplier) throws MyEntityNotFoundException;
     List<SupplierDTO> createSuppliersList(List<SupplierDTO> suppliers);
     SupplierDTO updateSupplier(Long id, SupplierDTO supplier) throws MyEntityNotFoundException;
     void deleteSupplier(Long id);
-    SupplierDTO getSupplierById(Long id) throws MyEntityNotFoundException;
+    Supplier getSupplierById(Long id) throws MyEntityNotFoundException;
     List<SupplierDTO> getSuppliers();
 
     List<ProductDTO> getSupplierProducts(long idSupplier) throws MyEntityNotFoundException;

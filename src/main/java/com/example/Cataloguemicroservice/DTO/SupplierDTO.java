@@ -2,7 +2,6 @@ package com.example.Cataloguemicroservice.DTO;
 
 import com.example.Cataloguemicroservice.Entities.Product;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

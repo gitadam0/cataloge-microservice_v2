@@ -1,26 +1,25 @@
 package com.example.Cataloguemicroservice.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Entity
 @Data
-@Table(name = "categories")
+@Document("Categorys")
 @NoArgsConstructor
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCategory;
 //    @Column(nullable = true)
     private String nomCategory;
 
 
-    @OneToMany(mappedBy = "category")
-    @JsonIgnore
+    @DBRef
     private List<Product> products;
 
 }

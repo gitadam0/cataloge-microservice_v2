@@ -3,14 +3,14 @@ package com.example.Cataloguemicroservice.Repository;
 import com.example.Cataloguemicroservice.Entities.Etiquette;
 import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Entities.Variety;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends MongoRepository<Product, Long> {
  /*   // Find products by category
     List<Product> findByCategory(Category category);
 
