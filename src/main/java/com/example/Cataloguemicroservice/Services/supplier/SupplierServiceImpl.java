@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-@RequiredArgsConstructor
+
 public class SupplierServiceImpl implements SupplierService {
 
 

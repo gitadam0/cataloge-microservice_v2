@@ -16,7 +16,6 @@ public interface SupplierService {
     void deleteSupplier(Long id);
     SupplierDTO getSupplierById(Long id) throws MyEntityNotFoundException;
     List<SupplierDTO> getSuppliers();
-
     List<ProductDTO> getSupplierProducts(long idSupplier) throws MyEntityNotFoundException;
 
 }
