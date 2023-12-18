@@ -1,23 +1,22 @@
 package com.example.Cataloguemicroservice.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Entity
 @Data
-@Table(name = "varieties")
+@Document("Varietys")
 @NoArgsConstructor
 public class Variety {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVariety;
     private String varietyName;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "varieties")
+    @DBRef
     private List<Product> products;
 }

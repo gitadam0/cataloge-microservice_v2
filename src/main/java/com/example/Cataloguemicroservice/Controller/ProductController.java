@@ -84,6 +84,13 @@ public class ProductController {
         System.out.println(productdto.getCategoryID());
         return productdto;
     }
+    @PostMapping("/createListProductInStock")
+    public List<ProductDTO> createListProductInStock(@RequestBody List<ProductDTO> productDTO) throws MyEntityNotFoundException {
+        List<ProductDTO> productdtos = productService.createProducts(productDTO);
+        messageSender.sendListProduct(productdtos);
+        //System.out.println(productdto.getCategoryID());
+        return productdtos;
+    }
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);

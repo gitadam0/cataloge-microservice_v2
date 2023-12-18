@@ -51,7 +51,7 @@ public class MessageSender {
     public void sendListProduct(List<ProductDTO> productDTOList) {
         try {
             String jsonMessage = objectMapper.writeValueAsString(productDTOList);
-            String destination = "adamjakan1";
+            String destination = "newListProductInStock";
             jmsTemplate.send(destination, session -> {
                 javax.jms.TextMessage message = session.createTextMessage(jsonMessage);
                 return message;

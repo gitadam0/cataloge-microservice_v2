@@ -11,6 +11,7 @@ import com.example.Cataloguemicroservice.Repository.EtiquetteRepository;
 import com.example.Cataloguemicroservice.Repository.ProductRepository;
 import com.example.Cataloguemicroservice.Repository.VarietyRepository;
 import com.example.Cataloguemicroservice.Services.Category.CategoryService;
+import com.example.Cataloguemicroservice.Services.supplier.SupplierService;
 import com.example.Cataloguemicroservice.transformers.ProductTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,44 +27,57 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final EtiquetteRepository etiquetteRepository;
     private final CategoryService categoryService;
+    private final SupplierService supplierService;
     private final VarietyRepository varietyRepository;
 
     private static final Logger logger =  LoggerFactory.getLogger(ProductServiceImpl.class);
     @Autowired
     public ProductServiceImpl(
             ProductRepository productRepository, EtiquetteRepository etiquetteRepository,
-            CategoryService categoryService, VarietyRepository varietyRepository
+            CategoryService categoryService, VarietyRepository varietyRepository,SupplierService supplierService
     ) {
         this.productRepository = productRepository;
         this.etiquetteRepository = etiquetteRepository;
         this.categoryService = categoryService;
         this.varietyRepository = varietyRepository;
+        this.supplierService = supplierService;
     }
 
-//    @Override
-//    public ProductDTO createProduct(ProductDTO product) throws EntityNotFoundException {
-//        //solution for the category object name raltion with the product
-//       Product producto =  productRepository.save(ProductTransformer.transformToEntity(product));
-//       producto.setCategory(categoryService.getCategoryByID(product.getCategoryID()));
-//        return product;
-//    }
 @Override
 public ProductDTO createProduct(ProductDTO product)  {
     Product producto = ProductTransformer.transformToEntity(product);
+    //checks if there is a category or a supplier for the id we entered
     try {
         producto.setCategory(categoryService.getCategoryByID(product.getCategoryID()));
     } catch (MyEntityNotFoundException e) {
         throw new RuntimeException(e);
     }
-    /*if(productRepository.findProductByReference(product.getReference())==null ){
+    try {
+        producto.setSupplier(supplierService.getSupplierById(product.getSupplierID()));
+    } catch (MyEntityNotFoundException e) {
+        throw new RuntimeException(e);
+    }
+    //checks if there is already a product with same category
+    if(productRepository.findProductByReference(product.getReference()).isPresent()){
+        throw new RuntimeException("product  already exists for ref:"+product.getReference());
+    }
 
-    }*/
+
     logger.info("created product with id {}"+producto.getIdProduct());
     return ProductTransformer.transformToDTO(productRepository.save(producto));
 }
 
     @Override
     public List<ProductDTO> createProducts(List<ProductDTO> products) {
+        for (ProductDTO product : products) {
+
+            /*if(productRepository.findProductByReference(product.getReference()).isPresent()){
+                throw new RuntimeException("product  already exists for ref:"+product.getReference());
+            }*/
+           /* if(productRepository.doesProductExistByReference(product.getReference())){
+                throw new RuntimeException("product  already exists for ref:"+product.getReference());
+            }*/
+        }
         productRepository.saveAll(ProductTransformer.transformListToEntityList(products));
         return products;
     }

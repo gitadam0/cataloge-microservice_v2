@@ -9,7 +9,6 @@ import com.example.Cataloguemicroservice.transformers.SupplierTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.Cataloguemicroservice.Repository.SupplierRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,13 +29,13 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public SupplierDTO findSupplierByNom(String supplierName) {
+    public SupplierDTO findSupplierByNom(String supplierName) throws MyEntityNotFoundException {
         Supplier supplier = supplierRepository.findByNomSupplier(supplierName);
 
         if (supplier != null) {
             return SupplierTransformer.transformToDTO(supplier);
         } else {
-            throw new EntityNotFoundException("Supplier not found");
+            throw new MyEntityNotFoundException("Supplier not found");
         }
     }
 
@@ -70,10 +69,11 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public SupplierDTO getSupplierById(Long id) throws MyEntityNotFoundException {
+    public Supplier getSupplierById(Long id) throws MyEntityNotFoundException {
         Supplier supplier = supplierRepository.findByIdSupplier(id);
-        Objects.requireNonNull(supplier, "supplier cannot be null");
-        return SupplierTransformer.transformToDTO(supplier);
+        Objects.requireNonNull(supplier, "supplier is not found for id: "+id);
+        //return SupplierTransformer.transformToDTO(supplier);
+        return supplier;
     }
 
     @Override
