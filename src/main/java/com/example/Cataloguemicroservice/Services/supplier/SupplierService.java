@@ -12,7 +12,7 @@ public interface SupplierService {
 
     SupplierDTO createSupplier(SupplierDTO supplier) throws MyEntityNotFoundException;
     List<SupplierDTO> createSuppliersList(List<SupplierDTO> suppliers);
-    SupplierDTO updateSupplier(Long id, SupplierDTO supplier) throws MyEntityNotFoundException;
+    Supplier updateSupplier(Long id, SupplierDTO supplier) throws MyEntityNotFoundException;
     void deleteSupplier(Long id);
     SupplierDTO getSupplierById(Long id) throws MyEntityNotFoundException;
     List<SupplierDTO> getSuppliers();

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -42,5 +43,11 @@ public class Product implements Serializable {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "variety_id"))
     private Set<Variety> varieties;
+
+
+    @ElementCollection
+    private List<String> imgs ;
+    @ElementCollection
+    private List<String> colors ;
 
 }
