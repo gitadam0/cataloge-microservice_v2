@@ -16,7 +16,7 @@ public class Variety {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVariety;
     private String varietyName;
-
+    private String varietyValue;
     @JsonIgnore
     @ManyToMany(mappedBy = "varieties")
     private List<Product> products;
