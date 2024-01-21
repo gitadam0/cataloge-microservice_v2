@@ -24,7 +24,7 @@ public class ProductTransformer {
 //    }
     public static ProductDTO transformToDTO(Product product) {
         ProductDTO productDTO = new ProductDTO();
-        productDTO.setName(product.getNomProduct());
+        productDTO.setNomProduct(product.getNomProduct());
         productDTO.setIdProduct(product.getIdProduct());
         productDTO.setDescription(product.getDescription());
         productDTO.setReference(product.getReference());
@@ -45,7 +45,7 @@ public class ProductTransformer {
     public static Product transformToEntity(ProductDTO productDTO) {
         Product product = new Product();
         product.setIdProduct(productDTO.getIdProduct());
-        product.setNomProduct(productDTO.getName());
+        product.setNomProduct(productDTO.getNomProduct());
         product.setReference(productDTO.getReference());
         product.setDescription(productDTO.getDescription());
         product.setPrixProduct(productDTO.getPrixProduct());

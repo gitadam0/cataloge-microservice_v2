@@ -49,7 +49,7 @@ class ProductServiceImplTest {
 
         ProductDTO p1Dto = new ProductDTO();
         p1Dto.setIdProduct(1L);
-        p1Dto.setName("adam");
+        p1Dto.setNomProduct("adam");
         p1Dto.setCategoryID(category.getIdCategory());
         //when(productRepository.findAll()).thenReturn(List.of(p1));
         when(categoryService.getCategoryByID(1L)).thenReturn(category);
