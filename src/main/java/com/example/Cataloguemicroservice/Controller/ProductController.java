@@ -7,6 +7,7 @@ import com.example.Cataloguemicroservice.Services.MessagingService.YourMessaging
 import com.example.Cataloguemicroservice.Services.ProductService;
 import com.example.Cataloguemicroservice.jms.MessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -78,6 +79,7 @@ public class ProductController {
         return p;
     }*/
     @PostMapping("/createProductInStock")
+    @Transactional
     public ProductDTO createProductInStock(@RequestBody ProductDTO productDTO) throws MyEntityNotFoundException {
         ProductDTO productdto = productService.createProduct(productDTO);
         messageSender.sendProduct(productdto);

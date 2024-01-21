@@ -17,6 +17,7 @@ public class Variety {
     private Long idVariety;
     private String varietyName;
     private String varietyValue;
+    private Long quantity;
     @JsonIgnore
     @ManyToMany(mappedBy = "varieties")
     private List<Product> products;

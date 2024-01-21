@@ -48,9 +48,9 @@ public class Product implements Serializable {
     private Set<Variety> varieties;
 
 
-    @ElementCollection
+    /*@ElementCollection
     private List<String> imgs ;
     @ElementCollection
-    private List<String> colors ;
+    private List<String> colors ;*/
 
 }

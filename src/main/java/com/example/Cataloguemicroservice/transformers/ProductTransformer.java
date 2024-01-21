@@ -4,8 +4,12 @@ import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.example.Cataloguemicroservice.Entities.Category;
 import com.example.Cataloguemicroservice.Entities.Supplier;
 import com.example.Cataloguemicroservice.Entities.Product;
+import com.example.Cataloguemicroservice.Entities.Variety;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /*If your transformation logic involves complex mapping, requires customization for individual fields, or
@@ -33,6 +37,13 @@ public class ProductTransformer {
         productDTO.setPrixProduct(product.getPrixProduct());
         productDTO.setQuantity(product.getQuantity());
 
+        Set<Long> varietyIDs= new HashSet<>();
+        for (Variety variety : product.getVarieties()) {
+            varietyIDs.add(variety.getIdVariety());
+        }
+        productDTO.setVarietyIDs(varietyIDs);
+
+
         return productDTO;
     }
 
@@ -56,10 +67,19 @@ public class ProductTransformer {
         category.setIdCategory(productDTO.getCategoryID());
         product.setCategory(category);
 
-
         Supplier supplier = new Supplier();
         supplier.setIdSupplier(productDTO.getSupplierID());
         product.setSupplier(supplier);
+
+
+        Set<Variety> varietys = new HashSet<>();
+
+        for (Long varietyID : productDTO.getVarietyIDs()) {
+            Variety variety = new Variety();
+            variety.setIdVariety(varietyID);
+            varietys.add(variety);
+        }
+        product.setVarieties(varietys);
 
 
 

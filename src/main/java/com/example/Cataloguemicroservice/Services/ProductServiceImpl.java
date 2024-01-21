@@ -11,6 +11,7 @@ import com.example.Cataloguemicroservice.Repository.EtiquetteRepository;
 import com.example.Cataloguemicroservice.Repository.ProductRepository;
 import com.example.Cataloguemicroservice.Repository.VarietyRepository;
 import com.example.Cataloguemicroservice.Services.Category.CategoryService;
+import com.example.Cataloguemicroservice.Services.Variety.VarietyService;
 import com.example.Cataloguemicroservice.transformers.ProductTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final EtiquetteRepository etiquetteRepository;
     private final CategoryService categoryService;
+    private final VarietyService varietyService;
     private final VarietyRepository varietyRepository;
 
     private static final Logger logger =  LoggerFactory.getLogger(ProductServiceImpl.class);
@@ -33,11 +35,13 @@ public class ProductServiceImpl implements ProductService {
     public ProductServiceImpl(
             ProductRepository productRepository, EtiquetteRepository etiquetteRepository,
             CategoryService categoryService, VarietyRepository varietyRepository
+            ,VarietyService varietyService
     ) {
         this.productRepository = productRepository;
         this.etiquetteRepository = etiquetteRepository;
         this.categoryService = categoryService;
         this.varietyRepository = varietyRepository;
+        this.varietyService = varietyService;
     }
 
 //    @Override
@@ -58,6 +62,17 @@ public ProductDTO createProduct(ProductDTO product)  {
     } catch (MyEntityNotFoundException e) {
         throw new RuntimeException(e);
     }
+    // unfinshed code because i got weird error before running maven clean
+    // i thought it was the same as the setcategorty but it worked after the maven clean
+    /*try {
+
+        for (Long varietyID : product.getVarietyIDs()) {
+
+        }
+        producto.setVarieties(varietyService.getVarietyByID(product.getVarietyIDs()));
+    } catch (MyEntityNotFoundException e) {
+        throw new RuntimeException(e);
+    }*/
     logger.info("created product with id {}"+producto.getIdProduct());
     return ProductTransformer.transformToDTO(productRepository.save(producto));
 }
