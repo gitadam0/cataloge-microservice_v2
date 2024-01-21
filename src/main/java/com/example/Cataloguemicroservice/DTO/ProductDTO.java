@@ -18,7 +18,7 @@ public class ProductDTO {
     private String nomProduct;*/
     private Long idProduct;
     private String reference;
-    private String name;
+    private String nomProduct;
     private String description;
     private double prixProduct;
     private Long categoryID;
@@ -27,7 +27,7 @@ public class ProductDTO {
 
     public ProductDTO(Long idProduct,String name,String reference, String description, double prixProduct, Long categoryID) {
         this.idProduct = idProduct;
-        this.name = name;
+        this.nomProduct = name;
         this.reference = reference;
         this.description = description;
         this.prixProduct = prixProduct;

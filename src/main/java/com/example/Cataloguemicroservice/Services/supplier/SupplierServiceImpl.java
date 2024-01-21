@@ -2,6 +2,7 @@ package com.example.Cataloguemicroservice.Services.supplier;
 
 import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.example.Cataloguemicroservice.DTO.SupplierDTO;
+import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Entities.Supplier;
 import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
 import com.example.Cataloguemicroservice.transformers.ProductTransformer;
@@ -60,8 +61,18 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public SupplierDTO updateSupplier(Long id, SupplierDTO supplier) throws MyEntityNotFoundException {
-        return null;
+    public Supplier updateSupplier(Long id, SupplierDTO supplier) throws MyEntityNotFoundException {
+        Supplier existingSupplier = supplierRepository.findById(id)
+                .orElseThrow(() -> new MyEntityNotFoundException("Supplier not found with id: " + id));
+
+        Supplier updatedSupplier = SupplierTransformer.transformToEntity(supplier);
+        existingSupplier.setNomSupplier(updatedSupplier.getNomSupplier());
+        existingSupplier.setMail(updatedSupplier.getMail());
+        existingSupplier.setRib(updatedSupplier.getRib());
+        existingSupplier.setPhoneNumber(updatedSupplier.getPhoneNumber());
+        existingSupplier.setProducts(updatedSupplier.getProducts());
+        supplierRepository.save(existingSupplier);
+        return updatedSupplier;
     }
 
     @Override

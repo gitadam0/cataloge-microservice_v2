@@ -55,7 +55,7 @@ public class SupplierController {
     }
 
     @PutMapping("/{id}")
-    public SupplierDTO updateSupplier(@PathVariable Long id, @RequestBody SupplierDTO supplier) throws MyEntityNotFoundException {
+    public Supplier updateSupplier(@PathVariable Long id, @RequestBody SupplierDTO supplier) throws MyEntityNotFoundException {
         return supplierService.updateSupplier(id, supplier);
     }
 }

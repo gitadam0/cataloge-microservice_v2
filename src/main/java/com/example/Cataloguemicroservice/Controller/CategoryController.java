@@ -27,7 +27,7 @@ public class CategoryController {
     public Category getCategoryByID(@PathVariable Long id) throws MyEntityNotFoundException {
         return categoryService.getCategoryByID(id);
     }*/
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Category> getCategoryByID(@PathVariable Long id) {
         try {
             Category category = categoryService.getCategoryByID(id);
@@ -49,7 +49,7 @@ public class CategoryController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("id")
+    @PutMapping("/{id}")
     public Category updateCategory(@PathVariable Long id, @RequestBody Category catalogue) throws MyEntityNotFoundException {
         return categoryService.updateCategory(id, catalogue);
     }
