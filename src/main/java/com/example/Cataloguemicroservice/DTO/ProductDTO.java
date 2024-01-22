@@ -31,6 +31,7 @@ public class ProductDTO {
     private Long  supplierID;
     private Set<Long> varietyIDs;
     private Long quantity;
+    private List<String> imgs ;
 
     public ProductDTO(Long idProduct,String name,String reference, String description, double prixProduct, Long categoryID) {
         this.idProduct = idProduct;

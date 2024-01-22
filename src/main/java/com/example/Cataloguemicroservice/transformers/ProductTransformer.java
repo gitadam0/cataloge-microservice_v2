@@ -36,6 +36,7 @@ public class ProductTransformer {
         productDTO.setSupplierID(product.getSupplier().getIdSupplier());
         productDTO.setPrixProduct(product.getPrixProduct());
         productDTO.setQuantity(product.getQuantity());
+        productDTO.setImgs(product.getImgs());
 
         Set<Long> varietyIDs= new HashSet<>();
         for (Variety variety : product.getVarieties()) {
@@ -62,6 +63,7 @@ public class ProductTransformer {
         product.setDescription(productDTO.getDescription());
         product.setPrixProduct(productDTO.getPrixProduct());
         product.setQuantity(productDTO.getQuantity());
+        product.setImgs(productDTO.getImgs());
 
         Category category = new Category();
         category.setIdCategory(productDTO.getCategoryID());
