@@ -20,5 +20,7 @@ public class Variety {
     private Long quantity;
     @JsonIgnore
     @ManyToMany(mappedBy = "varieties")
-    private List<Product> products;
+   private List<Product> products;
+   /*@OneToMany(mappedBy = "variety")
+    private List<CustomProductVariety> products;*/
 }

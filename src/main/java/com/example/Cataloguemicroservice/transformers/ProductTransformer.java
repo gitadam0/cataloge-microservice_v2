@@ -38,11 +38,11 @@ public class ProductTransformer {
         productDTO.setQuantity(product.getQuantity());
         productDTO.setImgs(product.getImgs());
 
-        Set<Long> varietyIDs= new HashSet<>();
+        /*Set<Long> varietyIDs= new HashSet<>();
         for (Variety variety : product.getVarieties()) {
             varietyIDs.add(variety.getIdVariety());
-        }
-        productDTO.setVarietyIDs(varietyIDs);
+        }*/
+       productDTO.setVarietys(product.getVarieties());
 
 
         return productDTO;
@@ -74,14 +74,14 @@ public class ProductTransformer {
         product.setSupplier(supplier);
 
 
-        Set<Variety> varietys = new HashSet<>();
+        /*Set<Variety> varietys = new HashSet<>();
 
         for (Long varietyID : productDTO.getVarietyIDs()) {
             Variety variety = new Variety();
             variety.setIdVariety(varietyID);
             varietys.add(variety);
-        }
-        product.setVarieties(varietys);
+        }*/
+        product.setVarieties(productDTO.getVarietys());
 
 
 

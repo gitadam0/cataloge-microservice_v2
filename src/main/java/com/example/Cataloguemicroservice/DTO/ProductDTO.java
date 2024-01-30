@@ -1,6 +1,8 @@
 package com.example.Cataloguemicroservice.DTO;
 
+import com.example.Cataloguemicroservice.Entities.CustomProductVariety;
 import com.example.Cataloguemicroservice.Entities.Product;
+import com.example.Cataloguemicroservice.Entities.Variety;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
@@ -29,7 +31,9 @@ public class ProductDTO {
     private double prixProduct;
     private Long categoryID;
     private Long  supplierID;
-    private Set<Long> varietyIDs;
+    //private Set<Long> varietyIDs;
+    private Set<Variety> varietys;
+    //private Set<CustomProductVariety> varietys;
     private Long quantity;
     private List<String> imgs ;
 
