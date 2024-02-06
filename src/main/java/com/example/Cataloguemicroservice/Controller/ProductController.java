@@ -36,15 +36,15 @@ public class ProductController {
         return productService.getProducts();
     }
 
-    @PostMapping
+    /*@PostMapping
     public ProductDTO createProduct(@RequestBody ProductDTO product) throws MyEntityNotFoundException {
         return productService.createProduct(product);
-    }
+    }*/
 
-    @PostMapping("/createMultiProduct")
+    /*@PostMapping("/createMultiProduct")
     public List<ProductDTO> createMultiProduct(@RequestBody List<ProductDTO> products) {
         return productService.createProducts(products);
-    }
+    }*/
 
     @PutMapping("/{id}")
     public ProductDTO updateProduct(@PathVariable Long id, @RequestBody ProductDTO product) throws MyEntityNotFoundException {

@@ -42,7 +42,7 @@ public class ProductTransformer {
         for (Variety variety : product.getVarieties()) {
             varietyIDs.add(variety.getIdVariety());
         }*/
-       productDTO.setVarietys(product.getVarieties());
+       productDTO.setVarieties(product.getVarieties());
 
 
         return productDTO;
@@ -81,7 +81,7 @@ public class ProductTransformer {
             variety.setIdVariety(varietyID);
             varietys.add(variety);
         }*/
-        product.setVarieties(productDTO.getVarietys());
+        product.setVarieties(productDTO.getVarieties());
 
 
 

@@ -2,6 +2,7 @@ package com.example.Cataloguemicroservice.Services.supplier;
 
 import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.example.Cataloguemicroservice.DTO.SupplierDTO;
+import com.example.Cataloguemicroservice.Entities.Category;
 import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Entities.Supplier;
 import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
@@ -77,6 +78,14 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public void deleteSupplier(Long id) {
+        /*Supplier defaultSupplier = null;
+        try {
+            defaultSupplier = supplierRepository.findById(1L)
+                    .orElseThrow(()->new MyEntityNotFoundException(" default supplier not found for id:"+ 1
+                            +"for this code to work you have to have a default supplier with id = 1"));
+        } catch (MyEntityNotFoundException e) {
+            throw new RuntimeException(e);
+        }*/
         supplierRepository.deleteById(id);
     }
 

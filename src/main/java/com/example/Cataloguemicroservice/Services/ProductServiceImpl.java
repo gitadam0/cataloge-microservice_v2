@@ -96,12 +96,18 @@ public ProductDTO createProduct(ProductDTO product)  {
         Product existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new MyEntityNotFoundException("Product not found with id: " + id));
         Product updatedProduct = ProductTransformer.transformToEntity(updatedProductDTO);
+
         existingProduct.setNomProduct(updatedProduct.getNomProduct());
+        existingProduct.setDescription(updatedProduct.getDescription());
         existingProduct.setPrixProduct(updatedProduct.getPrixProduct());
         existingProduct.setVarieties(updatedProduct.getVarieties());
         existingProduct.setEtiquettes(updatedProduct.getEtiquettes());
         existingProduct.setCategory(updatedProduct.getCategory());
         existingProduct.setSupplier(updatedProduct.getSupplier());
+        existingProduct.setImgs(updatedProduct.getImgs());
+        existingProduct.setQuantity(updatedProduct.getQuantity());
+
+
         productRepository.save(existingProduct);
         return updatedProductDTO;
     }

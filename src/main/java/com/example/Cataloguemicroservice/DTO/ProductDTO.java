@@ -32,7 +32,7 @@ public class ProductDTO {
     private Long categoryID;
     private Long  supplierID;
     //private Set<Long> varietyIDs;
-    private Set<Variety> varietys;
+    private Set<Variety> varieties;
     //private Set<CustomProductVariety> varietys;
     private Long quantity;
     private List<String> imgs ;

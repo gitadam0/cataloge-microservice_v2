@@ -36,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
     //
     @Override
     public void deleteCategory(Long id)  {
-        //make sure toi set id of default category
+        //make sure to set id of default category
         Category defaultCategory = null;
         try {
             defaultCategory = categoryRepository.findById(1L)
